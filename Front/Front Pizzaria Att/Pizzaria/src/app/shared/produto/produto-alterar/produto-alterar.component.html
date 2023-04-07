@@ -1,0 +1,24 @@
+<mat-card>
+    <mat-card-title>Alterar Matéria Prima</mat-card-title>
+    <form [formGroup]="produtoForm">
+        <mat-form-field>
+            <mat-label>Descrição</mat-label>
+            <input matInput formControlName="descricao" name="descricao"
+            [(ngModel)]="produto.descricao">
+        </mat-form-field> 
+        <mat-form-field>
+            <mat-label>Estoque</mat-label>
+            <input matInput formControlName="estoque" name="estoque"
+            [(ngModel)]="produto.estoque">
+        </mat-form-field> 
+
+        <div *ngIf="produtoForm.get('codigo')?.errors && produtoForm.get('codigo')?.touched" class="error"></div>
+    </form>
+</mat-card>
+
+<button mat-raised-button (click)="alterarProduto()" class="mat-primary mat-dark button">
+    Atualizar
+</button>
+<button mat-raised-button (click)="cancelar()">
+    Voltar
+</button>

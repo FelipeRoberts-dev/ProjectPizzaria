@@ -1,0 +1,26 @@
+.sidenav{
+    background-color: #3f51b5;
+    width: 200px;
+    position: fixed;
+}
+
+.sidenav a {
+    color: #fff;
+}
+
+.sidenav i {
+    padding-right: 10px;
+    
+}
+
+.navegacaocontent{
+    padding: 16px;
+    background-color: white;
+    color: black; 
+}
+
+
+//para o tamanho da viewport menos a altura da barra superior (64 pixels).
+.mat-sidenav-container {
+    height: calc(100vh - 64px);
+  }

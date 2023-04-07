@@ -1,0 +1,8 @@
+<ng-container matColumnDef="acao">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let produto">
+      <button mat-icon-button color="warn" (click)="abrirModalExclusao(produto)">
+        <mat-icon aria-label="Excluir">delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>

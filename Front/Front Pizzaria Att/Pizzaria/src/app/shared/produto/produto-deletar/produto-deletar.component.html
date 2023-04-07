@@ -1,0 +1,23 @@
+<mat-card>
+    <mat-card-title>Excluir Matéria Prima</mat-card-title>
+    <form>
+        <mat-form-field>
+            <mat-label>Descrição</mat-label>
+            <input matInput placeholder="Descrição" name="descricao"
+            [value]="produto.descricao" [disabled]="desabilitarExclusao">
+        </mat-form-field> 
+        <mat-form-field>
+            <mat-label>Estoque</mat-label>
+            <input matInput placeholder="Estoque" name="estoque"
+            [value]="produto.estoque" [disabled]="desabilitarExclusao">
+        </mat-form-field> 
+
+    </form>
+</mat-card>
+
+<button mat-raised-button (click)="deletarProduto()" color="warn">
+    Atualizar
+</button>
+<button mat-raised-button (click)="cancelar()">
+    Voltar
+</button>

@@ -1,0 +1,33 @@
+<mat-sidenav-container class="container">
+    <mat-sidenav class="sidenav" mode="side" opened fixedInViewport="true" fixedTopGap="64">
+        <mat-nav-list class="nav-list">
+            <a mat-list-item routerLink="/">
+                <i class="material-icons">
+                    home
+                </i>
+                Início
+            </a>
+            <a mat-list-item>
+                <i class="material-icons">
+                    adb
+                </i>
+                Usuários
+            </a>
+            <a mat-list-item routerLink="/produtos">
+                <i class="material-icons">
+                    local_hospital
+                </i>
+                Produtos
+            </a>
+            <a mat-list-item routerLink="/materia-prima">
+                <i class="material-icons">
+                    room_service
+                </i>
+                Materia Prima
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="navegacaocontent">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
