@@ -14,11 +14,13 @@ import { MatInputModule} from '@angular/material/input';
 
 import { MatNativeDateModule } from '@angular/material/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProdutosMateriaPrimaComponent } from './views/produtos-materia-prima/produtos-materia-prima.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ForDirective,
+    ProdutosMateriaPrimaComponent,
   ],
   imports: [
     BrowserModule,

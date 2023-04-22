@@ -5,7 +5,7 @@ using System.Data;
 
 namespace pizzaria.api01.Repositorio
 {
-    public abstract class RepositorioBaseProdutos<Produtos> : IProdutos<Produtos>
+    public abstract class RepositorioBaseProdutos <Produtos> : IProdutos<Produtos>
     {
         protected readonly IDbConnection _dbConnection;
 
@@ -14,8 +14,22 @@ namespace pizzaria.api01.Repositorio
             _dbConnection = dbConnection;
         }
 
-        public virtual async Task<IEnumerable<Produtos>> ListarProdutos(){
-            return await _dbConnection.QueryAsync<Produtos>($"SELECT * FROM {typeof(Produtos).Name}");
+        public virtual async Task<IEnumerable<Produtos>> ListarProdutos()
+        {
+            var query = $@"SELECT 
+            p.Id,
+            p.Codigo, 
+            p.Descricao,
+            p.Quantidade,
+            p.MateriaPrimaId,
+            m.Descricao AS DescricaoMateriaPrima
+       FROM 
+            {typeof(Produtos).Name} p
+       INNER JOIN 
+            {typeof(MateriaPrimas).Name} m ON m.Id = p.MateriaPrimaId";
+
+            var produtos = await _dbConnection.QueryAsync<Produtos>(query);
+            return produtos;
         }
 
         public virtual async Task<Produtos> GetByIdProdutos(int id)
@@ -24,12 +38,12 @@ namespace pizzaria.api01.Repositorio
         }
         public virtual async Task<int> InserirProdutos(Produtos produtos)
         {
-            var query = $"INSERT INTO {typeof(Produtos).Name} (Codigo, Descricao, Estoque) VALUES (@Codigo, @Descricao, @Estoque); SELECT SCOPE_IDENTITY();";
+            var query = $"INSERT INTO {typeof(Produtos).Name} (Codigo, Descricao, MateriaPrimaId, Quantidade) VALUES (@Codigo, @Descricao, @MateriaPrimaId, @Quantidade); SELECT SCOPE_IDENTITY();";
             return await _dbConnection.ExecuteScalarAsync<int>(query, produtos);
         }
         public virtual async Task<bool> AlterarProdutos(Produtos produtos)
         {
-            var query = $"UPDATE {typeof(Produtos).Name} SET Codigo = @Codigo, Descricao = @Descricao, Estoque = @Estoque WHERE Id = @Id";
+            var query = $"UPDATE {typeof(Produtos).Name} SET Codigo = @Codigo, Descricao = @Descricao, Quantidade = @Quantidade WHERE Id = @Id";
             var result = await _dbConnection.ExecuteAsync(query, produtos);
             return result > 0;
         }
@@ -40,6 +54,7 @@ namespace pizzaria.api01.Repositorio
             return result > 0;
         }
 
+        
 
     }
 }
