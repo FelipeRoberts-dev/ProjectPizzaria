@@ -1,0 +1,37 @@
+<mat-card>
+    <mat-card-title>Novo Produto</mat-card-title>
+    <form [formGroup]="produtoForm">
+        <mat-form-field>
+            <mat-label>Código</mat-label>
+            <input matInput formControlName="codigo" name="codigo"
+            [(ngModel)]="produto.codigo">
+        </mat-form-field> 
+        <mat-form-field>
+            <mat-label>Descriçaõ</mat-label>
+            <input matInput formControlName="descricao" name="descricao"
+            [(ngModel)]="produto.descricao">
+        </mat-form-field> 
+        <mat-form-field>
+            <mat-label>Quantidade</mat-label>
+            <input matInput formControlName="quantidade" name="quantidade"
+            [(ngModel)]="produto.quantidade">
+        </mat-form-field> 
+        <mat-form-field>
+            <mat-label>Matéria Prima</mat-label>
+            <mat-select formControlName="materiaprimaid" (selectionChange)="selecaoMateriaPrimaChanged($event)">
+                <mat-option *ngFor="let materiaPrima of materiasPrimas" [value]="materiaPrima.id">
+                    {{ materiaPrima.descricao }}
+                </mat-option>
+            </mat-select>
+          </mat-form-field>
+        <div *ngIf="produtoForm.get('codigo')?.errors && produtoForm.get('codigo')?.touched" class="error"></div>
+    </form>
+</mat-card>
+
+<button mat-raised-button (click)="criarProduto()" class="mat-primary mat-dark button">
+    Salvar
+</button>
+
+<button mat-raised-button (click)="cancelar()">
+    Voltar
+</button>

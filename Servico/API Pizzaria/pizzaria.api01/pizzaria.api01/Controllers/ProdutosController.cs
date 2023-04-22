@@ -13,11 +13,13 @@ namespace pizzaria.api01.Controllers
     public class ProdutosController : ControllerBase
     {
         private readonly IProdutos<Produtos> _produtosRepositorio;
+        private readonly IMateriaPrima<MateriaPrimas> _materiaPrimaRepositorio;
         private readonly ILogger<ProdutosController> _logger;
 
         public ProdutosController(IDbConnection dbConnection, ILogger<ProdutosController> logger)
-        {
+        { 
             _produtosRepositorio = new ProdutosRepositorio(dbConnection);
+            _materiaPrimaRepositorio = new MateriaPrimaRepositorio(dbConnection);
             _logger = logger;
         }
 
@@ -70,6 +72,13 @@ namespace pizzaria.api01.Controllers
                 return NotFound();
 
             return NoContent();
+        }
+
+        [HttpGet("ListarMateriaPrima")]
+        public async Task<IActionResult> ListarMateriaPrimas()
+        {
+            var materiaPrimas = await _materiaPrimaRepositorio.ListarMateriaPrima();
+            return Ok(materiaPrimas);
         }
     }
 }

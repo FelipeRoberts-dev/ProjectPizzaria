@@ -30,7 +30,9 @@ import { ProdutoAlterarComponent } from './produto/produto-alterar/produto-alter
 import { ProdutoDeletarComponent } from './produto/produto-deletar/produto-deletar.component';
 import { ConfirmacaoExclusaoComponentComponent } from './produto/confirmacao-exclusao-component/confirmacao-exclusao-component.component'
 import { MatIconModule } from '@angular/material/icon';
-
+import { ProdutosMateriaPrimaRedComponent } from './produtosMateriaPrima/produtos-materia-prima-red/produtos-materia-prima-red.component';
+import { ProdutosMateriaPrimaCreateComponent } from './produtosMateriaPrima/produtos-materia-prima-create/produtos-materia-prima-create.component';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -43,6 +45,8 @@ import { MatIconModule } from '@angular/material/icon';
     ProdutoAlterarComponent,
     ProdutoDeletarComponent,
     ConfirmacaoExclusaoComponentComponent,
+    ProdutosMateriaPrimaRedComponent,
+    ProdutosMateriaPrimaCreateComponent,
   ],
   imports: [
     CommonModule,
@@ -62,7 +66,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule
   
   ],
   exports: [
@@ -73,6 +78,8 @@ import { MatIconModule } from '@angular/material/icon';
     ProdutoReadComponent,
     ProdutoAlterarComponent,
     ProdutoDeletarComponent,
+    ProdutosMateriaPrimaRedComponent,
+    ProdutosMateriaPrimaCreateComponent
   ],
   
 })

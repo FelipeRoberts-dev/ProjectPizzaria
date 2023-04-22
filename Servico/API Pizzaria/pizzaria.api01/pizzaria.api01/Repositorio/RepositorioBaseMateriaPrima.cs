@@ -15,7 +15,7 @@ namespace pizzaria.api01.Repositorio
 
         public virtual async Task<IEnumerable<MateriaPrimas>> ListarMateriaPrima()
         {
-            return await _dbConnection.QueryAsync<MateriaPrimas>($"SELECT * FROM {typeof(MateriaPrimas).Name}");
+            return await _dbConnection.QueryAsync<MateriaPrimas>($"SELECT Id, Descricao, Estoque FROM {typeof(MateriaPrimas).Name}");
         }
 
         public virtual async Task<MateriaPrimas> GetByIdMateriaPrima(int id)
