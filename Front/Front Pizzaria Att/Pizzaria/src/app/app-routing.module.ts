@@ -1,3 +1,4 @@
+import { UsuariosCreateComponent } from './shared/usuario/usuarios-create/usuarios-create.component';
 import { ProdutoDeletarComponent } from './shared/produto/produto-deletar/produto-deletar.component';
 import { ProdutoCreateComponent } from './shared/produto/produto-create/produto-create.component';
 import { NgModule, Component } from '@angular/core';
@@ -7,6 +8,7 @@ import {ProdutosComponent} from './views/produtos/produtos.component'
 import { ProdutoAlterarComponent } from './shared/produto/produto-alterar/produto-alterar.component';
 import { ProdutosMateriaPrimaComponent } from './views/produtos-materia-prima/produtos-materia-prima.component';
 import { ProdutosMateriaPrimaCreateComponent } from './shared/produtosMateriaPrima/produtos-materia-prima-create/produtos-materia-prima-create.component';
+import { UsuariosComponent } from './views/usuarios/usuarios.component';
 const routes: Routes = [{
   path: "",
   component: InicioComponent
@@ -33,6 +35,14 @@ const routes: Routes = [{
   {
     path: "produtos/criar",
     component: ProdutosMateriaPrimaCreateComponent
+  },
+  {
+    path: "usuarios",
+    component: UsuariosComponent
+  },
+  {
+    path: "usuarios/criar",
+    component: UsuariosCreateComponent
   }
 ];
 

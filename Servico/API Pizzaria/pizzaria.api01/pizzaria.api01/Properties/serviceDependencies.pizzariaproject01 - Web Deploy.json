@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "apis1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.ApiManagement/service/pizzariaapi01api/apis/pizzariaapi01",
+      "type": "apis.azure"
+    }
+  }
+}

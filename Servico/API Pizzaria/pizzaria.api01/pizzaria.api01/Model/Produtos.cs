@@ -11,12 +11,7 @@ namespace pizzaria.api01.Model
         public int Codigo { get; set; }
 
         public string Descricao { get; set; }
-        public int Quantidade { get; set; }
 
-
-        public int MateriaPrimaId { get; set; }
-
-        public string? DescricaoMateriaPrima { get; set; }
 
     }
 }

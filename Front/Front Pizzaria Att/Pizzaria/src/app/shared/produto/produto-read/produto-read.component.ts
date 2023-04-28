@@ -4,6 +4,7 @@ import { ProdutoService } from '../produto.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginatorIntl } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 @Component({
   selector: 'app-produto-read',
   templateUrl: './produto-read.component.html',
@@ -11,6 +12,7 @@ import { MatPaginatorIntl } from '@angular/material/paginator';
 })
 export class ProdutoReadComponent implements OnInit {
 
+  
   //Array que será nossa fonte de dados que sera carregado, tipo MatTableDataSource porq contém metódos para paginação
   produtosArray: MatTableDataSource<Produtos>;
 
@@ -19,6 +21,9 @@ export class ProdutoReadComponent implements OnInit {
 
     // Adicionar Paginação variavel.
     @ViewChild(MatPaginator) paginator: MatPaginator;
+
+    //Adicionar sort apos clicar header
+    @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private produtosService: ProdutoService,
@@ -34,6 +39,7 @@ export class ProdutoReadComponent implements OnInit {
     this.produtosService.listar().subscribe(produtos => {
       this.produtosArray = new MatTableDataSource<Produtos>(produtos);
       this.carregarPaginacao();
+      this.carregarOrdenacao();
 
     });
   }
@@ -53,5 +59,18 @@ export class ProdutoReadComponent implements OnInit {
          return `${start} – ${end} de ${length}`;
        };
   }
+
+  carregarOrdenacao() {
+    this.produtosArray.sortingDataAccessor = (item: Produtos, property) => {
+    switch(property) {
+    case 'descricao': return item.descricao;
+    case 'estoque': return item.estoque;
+    default: return '';
+    }
+    };
+    
+    
+    this.produtosArray.sort = this.sort; // habilitar ordenação
+    }
 
 }

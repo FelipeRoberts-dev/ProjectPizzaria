@@ -33,6 +33,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { ProdutosMateriaPrimaRedComponent } from './produtosMateriaPrima/produtos-materia-prima-red/produtos-materia-prima-red.component';
 import { ProdutosMateriaPrimaCreateComponent } from './produtosMateriaPrima/produtos-materia-prima-create/produtos-materia-prima-create.component';
 import { MatSelectModule } from '@angular/material/select';
+import { UsuariosRedComponent } from './usuario/usuarios-red/usuarios-red.component';
+import { UsuariosCreateComponent } from './usuario/usuarios-create/usuarios-create.component';
+import { MatSort } from '@angular/material/sort';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -47,6 +50,8 @@ import { MatSelectModule } from '@angular/material/select';
     ConfirmacaoExclusaoComponentComponent,
     ProdutosMateriaPrimaRedComponent,
     ProdutosMateriaPrimaCreateComponent,
+    UsuariosRedComponent,
+    UsuariosCreateComponent
   ],
   imports: [
     CommonModule,
@@ -79,7 +84,9 @@ import { MatSelectModule } from '@angular/material/select';
     ProdutoAlterarComponent,
     ProdutoDeletarComponent,
     ProdutosMateriaPrimaRedComponent,
-    ProdutosMateriaPrimaCreateComponent
+    ProdutosMateriaPrimaCreateComponent,
+    UsuariosRedComponent,
+    UsuariosCreateComponent
   ],
   
 })

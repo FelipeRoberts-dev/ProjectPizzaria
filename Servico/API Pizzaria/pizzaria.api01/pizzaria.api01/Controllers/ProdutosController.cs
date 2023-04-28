@@ -19,7 +19,6 @@ namespace pizzaria.api01.Controllers
         public ProdutosController(IDbConnection dbConnection, ILogger<ProdutosController> logger)
         { 
             _produtosRepositorio = new ProdutosRepositorio(dbConnection);
-            _materiaPrimaRepositorio = new MateriaPrimaRepositorio(dbConnection);
             _logger = logger;
         }
 
@@ -74,11 +73,6 @@ namespace pizzaria.api01.Controllers
             return NoContent();
         }
 
-        [HttpGet("ListarMateriaPrima")]
-        public async Task<IActionResult> ListarMateriaPrimas()
-        {
-            var materiaPrimas = await _materiaPrimaRepositorio.ListarMateriaPrima();
-            return Ok(materiaPrimas);
-        }
+     
     }
 }

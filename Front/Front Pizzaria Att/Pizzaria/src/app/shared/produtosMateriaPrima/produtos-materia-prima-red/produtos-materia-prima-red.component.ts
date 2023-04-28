@@ -21,7 +21,7 @@ materiasPrimas: any[] = []
 selecaoMateriaPrima: number;
 
 //Definir colunas
-dados = ['codigo', 'descricao', 'quantidade', 'descricaoMateriaPrima']
+dados = ['codigo', 'descricao']
 // Adicionar Paginação variavel.
 @ViewChild(MatPaginator) paginator: MatPaginator;
 

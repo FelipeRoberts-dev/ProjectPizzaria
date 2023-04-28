@@ -5,8 +5,9 @@ namespace pizzaria.api01.Repositorio
 {
     public class MateriaPrimaRepositorio : RepositorioBaseMateriaPrima<MateriaPrimas>
     {
-        public MateriaPrimaRepositorio(IDbConnection dbConnection) : base(dbConnection)
+        public MateriaPrimaRepositorio(IDbConnection dbConnection, FiltroMateriaPrimaRepository filtroMateriaPrima) : base(dbConnection, filtroMateriaPrima)
         {
+                
         }
     }
 }

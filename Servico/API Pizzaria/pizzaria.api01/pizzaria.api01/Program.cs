@@ -1,4 +1,7 @@
 using Microsoft.Data.SqlClient;
+using pizzaria.api01.Interface;
+using pizzaria.api01.Model;
+using pizzaria.api01.Repositorio;
 using System.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 string connectionString = @"Data Source=localhost;User ID=sa;Password=123;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False; Initial Catalog=Pizzaria";
 builder.Services.AddTransient<IDbConnection>((sp) => new SqlConnection(connectionString));
+builder.Services.AddScoped<IMateriaPrima<MateriaPrimas>, MateriaPrimaRepositorio>();
+builder.Services.AddScoped<FiltroMateriaPrimaRepository>();
+builder.Services.AddScoped<FiltroMateriaPrimaRepository>();
 
 builder.Services.AddCors(options =>
 {

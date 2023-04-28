@@ -19,14 +19,9 @@ namespace pizzaria.api01.Repositorio
             var query = $@"SELECT 
             p.Id,
             p.Codigo, 
-            p.Descricao,
-            p.Quantidade,
-            p.MateriaPrimaId,
-            m.Descricao AS DescricaoMateriaPrima
+            p.Descricao
        FROM 
-            {typeof(Produtos).Name} p
-       INNER JOIN 
-            {typeof(MateriaPrimas).Name} m ON m.Id = p.MateriaPrimaId";
+            {typeof(Produtos).Name} p";
 
             var produtos = await _dbConnection.QueryAsync<Produtos>(query);
             return produtos;

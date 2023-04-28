@@ -1,0 +1,25 @@
+<mat-card>
+    <mat-card-title>Novo Usuário</mat-card-title>
+    <form [formGroup]="usuariosForm">
+        <mat-form-field>
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName="nome" name="nome"
+            [(ngModel)]="usuarios.nome">
+        </mat-form-field> 
+        <mat-form-field>
+            <mat-label>Senha</mat-label>
+            <input matInput formControlName="senha" name="senha"
+            [(ngModel)]="usuarios.senha">
+        </mat-form-field> 
+        <div *ngIf="usuariosForm.get('codigo')?.errors && usuariosForm.get('codigo')?.touched" class="error"></div>
+    </form>
+</mat-card>
+
+
+<button mat-raised-button (click)="criarUsuario()" class="mat-primary mat-dark button">
+    Salvar
+</button>
+
+<button mat-raised-button (click)="cancelar()">
+    Voltar
+</button>

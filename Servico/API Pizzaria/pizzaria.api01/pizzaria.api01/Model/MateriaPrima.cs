@@ -9,5 +9,12 @@ namespace pizzaria.api01.Model
         public int Id { get; set; }
         public string Descricao { get; set; }
         public int Estoque { get; set; }
+
+        public int Total { get; set; }
+
+        
+
+       
+        
     }
 }

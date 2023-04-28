@@ -1,0 +1,25 @@
+
+
+
+.meu-botao-raised {
+    background-color: #1976d2; /* cor de fundo */
+    color: #fff; /* cor da fonte */
+    border: none; /* borda */
+    border-radius: 4px; /* borda arredondada */
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26); /* sombra */
+    cursor: pointer; /* cursor do mouse */
+    font-size: 14px; /* tamanho da fonte */
+    font-weight: 500; /* peso da fonte */
+    padding: 12px 24px; /* espaço interno */
+    transition: all 0.3s ease-out; /* transição suave */
+    position: relative;
+    margin-top: 50px; /* ou padding-top: 50px; */
+  }
+  
+  .meu-botao-raised:hover {
+    background-color: #1565c0; /* cor de fundo ao passar o mouse */
+    box-shadow: 0 5px 8px 0 rgba(0,0,0,.3); /* sombra ao passar o mouse */
+  }
+  
+
+
