@@ -1,4 +1,5 @@
 using Microsoft.Data.SqlClient;
+using OfficeOpenXml;
 using pizzaria.api01.Interface;
 using pizzaria.api01.Model;
 using pizzaria.api01.Repositorio;
@@ -26,6 +27,7 @@ builder.Services.AddCors(options =>
 
 
 
+ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

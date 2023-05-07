@@ -34,12 +34,12 @@ namespace pizzaria.api01.Controllers
             return Ok(materiaPrimas);
         }
 
-        //[HttpGet("ListarFiltrado")]
-        //public async Task<IActionResult> ListarFiltrado([FromQuery] FiltroMateriaPrima filtro)
-        //{
-        //    var materiaPrimas = await _materiaPrimaRepositorio.ListarMateriaPrima(filtro);
-        //    return Ok(materiaPrimas);
-        //}
+        [HttpGet("ListarFiltrado")]
+        public async Task<IActionResult> ListarFiltrado([FromQuery] FiltroMateriaPrima filtro)
+        {
+            var materiaPrimas = await _materiaPrimaRepositorio.ListarMateriaPrimaFiltrada(filtro);
+            return Ok(materiaPrimas);
+        }
 
         [HttpPost("Incluir")]
         public async Task<IActionResult> IncluirMateriaPrima([FromBody] MateriaPrimas materiaPrima)

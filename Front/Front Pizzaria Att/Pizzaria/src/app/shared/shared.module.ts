@@ -36,6 +36,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { UsuariosRedComponent } from './usuario/usuarios-red/usuarios-red.component';
 import { UsuariosCreateComponent } from './usuario/usuarios-create/usuarios-create.component';
 import { MatSort } from '@angular/material/sort';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/dialog';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { DialogRefComponent } from './dialog-ref/dialog-ref.component';
+import { MatRadioModule } from '@angular/material/radio';
+
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -51,7 +57,8 @@ import { MatSort } from '@angular/material/sort';
     ProdutosMateriaPrimaRedComponent,
     ProdutosMateriaPrimaCreateComponent,
     UsuariosRedComponent,
-    UsuariosCreateComponent
+    UsuariosCreateComponent,
+    DialogRefComponent
   ],
   imports: [
     CommonModule,
@@ -72,8 +79,11 @@ import { MatSort } from '@angular/material/sort';
     MatPaginatorModule,
     MatSortModule,
     MatIconModule,
-    MatSelectModule
-  
+    MatSelectModule,
+    MatExpansionModule,
+    MatCheckboxModule,
+    MatDialogModule,
+    MatRadioModule
   ],
   exports: [
     HeaderComponent,
@@ -88,6 +98,9 @@ import { MatSort } from '@angular/material/sort';
     UsuariosRedComponent,
     UsuariosCreateComponent
   ],
+  providers: [
+    
+  ]
   
 })
 export class SharedModule { }

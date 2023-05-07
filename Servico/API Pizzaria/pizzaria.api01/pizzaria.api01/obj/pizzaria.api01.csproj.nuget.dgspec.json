@@ -44,6 +44,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Aspose.PDF": {
+              "target": "Package",
+              "version": "[23.4.0, )"
+            },
             "Dapper": {
               "target": "Package",
               "version": "[2.0.123, )"
@@ -51,6 +55,14 @@
             "Dapper.Contrib": {
               "target": "Package",
               "version": "[2.0.78, )"
+            },
+            "DocumentFormat.OpenXml": {
+              "target": "Package",
+              "version": "[2.20.0, )"
+            },
+            "EPPlus": {
+              "target": "Package",
+              "version": "[6.2.2, )"
             },
             "Microsoft.Data.SqlClient": {
               "target": "Package",
@@ -63,6 +75,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
+            },
+            "iTextSharp": {
+              "target": "Package",
+              "version": "[5.5.13.3, )"
             }
           },
           "imports": [

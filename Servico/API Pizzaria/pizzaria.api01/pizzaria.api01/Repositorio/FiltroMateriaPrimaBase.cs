@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using pizzaria.api01.Interface;
 using System.Data.Common;
+using Newtonsoft.Json.Schema;
 
 namespace pizzaria.api01.Repositorio
 {
@@ -22,14 +23,19 @@ namespace pizzaria.api01.Repositorio
             var str = $"SELECT Id, Descricao, Estoque FROM {filtro.Tabela}";
             var parametros = new List<SqlParameter>();
             string whereClause = "";
+            string wheresemClause = "";
 
-            if (!string.IsNullOrEmpty(filtro.Campo) && !string.IsNullOrEmpty(filtro.Criterio))
+           if(filtro.Valor_LIKE == null && filtro.Valor_IGUAL == null)
             {
-                AdicionarParametro(filtro, parametros);
-                AdicionarCondicao(filtro, ref str, parametros);
-                whereClause = " WHERE "  + filtro.Condicao;
+                return wheresemClause;
             }
 
+
+            AdicionarParametro(filtro, parametros);
+
+            AdicionarCondicao(filtro, ref str, parametros);
+
+            whereClause = " WHERE " + filtro.Condicao;
 
             return whereClause;
 
@@ -38,39 +44,44 @@ namespace pizzaria.api01.Repositorio
         private static void AdicionarParametro(FiltroMateriaPrima filtro, List<SqlParameter> parametros)
         {
             parametros.Add(new SqlParameter($"@{filtro.Valor}_filtro", filtro.Valor));
+            parametros.Add(new SqlParameter($"@{filtro.Valor_LIKE}_filtro", filtro.Valor_LIKE));
+            parametros.Add(new SqlParameter($"@{filtro.Valor_IGUAL}_filtro", filtro.Valor_IGUAL));
 
         }
 
         private static void AdicionarCondicao(FiltroMateriaPrima filtro, ref string str, List<SqlParameter> parametros)
         {
-            if (!string.IsNullOrEmpty(filtro.Criterio))
+            if (!string.IsNullOrEmpty(filtro.Criterio_LIKE) || !string.IsNullOrEmpty(filtro.Criterio_IGUAL)
+                || !string.IsNullOrEmpty(filtro.Criterio_MAIORIGUAL) || !string.IsNullOrEmpty(filtro.Criterio_MENOIGUAL))
+
+
             {
-                if (filtro.Criterio == "=")
+                if (filtro.Criterio_IGUAL == "=")
                 {
-                    filtro.Condicao = $"{filtro.Campo} = @{filtro.Valor}_filtro";
-                    parametros.Add(new SqlParameter($"@{filtro.Valor}", filtro.Valor));
+                    filtro.Condicao = $"Estoque = @{filtro.Valor_IGUAL}_filtro";
+                    parametros.Add(new SqlParameter($"@{filtro.Valor_IGUAL}", filtro.Valor_IGUAL));
                 }
-                else if (filtro.Criterio == "LIKE")
+                else if (filtro.Criterio_LIKE == "LIKE")
                 {
-                    filtro.Condicao = $"{filtro.Campo} LIKE '%' + @{filtro.Valor}_filtro + '%'";
-                    parametros.Add(new SqlParameter($"@{filtro.Valor}", filtro.Valor));
+                    filtro.Condicao = $"Descricao LIKE '%' + @{filtro.Valor_LIKE}_filtro + '%'";
+                    parametros.Add(new SqlParameter($"@{filtro.Valor_LIKE}", filtro.Valor_LIKE));
                 }
-                else if (filtro.Criterio == ">")
+                else if (filtro.Criterio_MAIOR == ">")
                 {
                     filtro.Condicao = $"{filtro.Campo} > @{filtro.Valor}_filtro";
                     parametros.Add(new SqlParameter($"@{filtro.Valor}", filtro.Valor));
                 }
-                else if (filtro.Criterio == "<")
+                else if (filtro.Criterio_MENOR == "<")
                 {
                     filtro.Condicao = $"{filtro.Campo} < @{filtro.Valor}_filtro";
                     parametros.Add(new SqlParameter($"@{filtro.Valor}", filtro.Valor));
                 }
-                else if (filtro.Criterio == ">=")
+                else if (filtro.Criterio_MAIORIGUAL == ">=")
                 {
                     filtro.Condicao = $"{filtro.Campo} >= @{filtro.Valor}_filtro";
                     parametros.Add(new SqlParameter($"@{filtro.Valor}", filtro.Valor));
                 }
-                else if (filtro.Criterio == "<=")
+                else if (filtro.Criterio_MENOIGUAL == "<=")
                 {
                     filtro.Condicao = $"{filtro.Campo} <= @{filtro.Valor}_filtro";
                     parametros.Add(new SqlParameter($"@{filtro.Valor}", filtro.Valor));
@@ -90,7 +101,12 @@ namespace pizzaria.api01.Repositorio
                     str += filtro.Condicao;
 
                     filtro.AndCondicao = true;
+
+               
+
                 }
+
+                
             }
         }
 

@@ -1,0 +1,29 @@
+<mat-dialog-content class="export-dialog">
+  <h1 class="export-title">Exportação de dados</h1>
+  <div>
+    <div class="export-options">
+      <p>Selecione o tipo do arquivo que deseja exportar:</p>
+      <mat-checkbox [(ngModel)]="selecaoCheckOpcaoExportar.pdf"(ngModelChange)="HabilitarCampos($event, 'pdf')">Pdf</mat-checkbox>
+      <mat-checkbox [(ngModel)]="selecaoCheckOpcaoExportar.excel"(ngModelChange)="HabilitarCampos($event, 'excel')">Excel</mat-checkbox>
+    </div>  
+  </div>
+  <div class="export-fields">
+    <p>Selecione os campos que deseja exportar:</p>
+        <mat-radio-group [(ngModel)]="selecaoRadionsExportar.opcao">
+          <mat-radio-button *ngFor="let opcao of opcoesRadios" [value]="opcao.value" [disabled]="!camposHabilitados">
+            {{opcao.label}}
+          </mat-radio-button>
+        </mat-radio-group>
+  <form [formGroup]="excelForm">
+    <mat-form-field class="campoCaminho">
+      <mat-label>Nome do Arquivo:</mat-label>
+      <input matInput [(ngModel)]="caminhoArquivo" [disabled]="!camposHabilitados" formControlName="caminhoArquivo">
+    </mat-form-field> 
+  </form>
+  </div>
+
+  <div class="export-actions">
+    <button mat-button (click)="fecharDialog()">Cancelar</button>
+    <button mat-button [disabled]="!camposHabilitados"   (click)="gerarExcel()">Gerar</button>
+  </div>
+</mat-dialog-content>

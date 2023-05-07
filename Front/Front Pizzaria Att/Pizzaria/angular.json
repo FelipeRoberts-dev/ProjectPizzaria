@@ -33,6 +33,7 @@
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
+            
             "scripts": []
           },
           "configurations": {
@@ -91,13 +92,27 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",{
+                "glob": "**/*",
+                "input": "node_modules/sweetalert2/dist/",
+                "output": "/assets/css/"
+              }
             ],
             "styles": [
               "@angular/material/prebuilt-themes/pink-bluegrey.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/dark.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css",
+              "src/bootstrap.scss",
+              "src/assets/css/sweetalert2.min.css"
+
+
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "src/assets/sweetalert2.min.js"
+            ]
           }
         }
       }

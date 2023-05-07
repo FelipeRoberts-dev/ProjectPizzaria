@@ -10,11 +10,11 @@ namespace pizzaria.api01.Model
         public string Descricao { get; set; }
         public int Estoque { get; set; }
 
-        public int Total { get; set; }
+        public int? Total { get; set; }
 
         
 
        
-        
+       
     }
 }

@@ -17,6 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ProdutosMateriaPrimaComponent } from './views/produtos-materia-prima/produtos-materia-prima.component';
 import { UsuariosComponent } from './views/usuarios/usuarios.component';
 
+import { MatDialogModule } from '@angular/material/dialog';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +35,8 @@ import { UsuariosComponent } from './views/usuarios/usuarios.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatNativeDateModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule
   ],
   exports : [
     ForDirective

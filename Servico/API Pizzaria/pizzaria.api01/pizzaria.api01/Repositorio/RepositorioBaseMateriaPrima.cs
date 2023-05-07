@@ -26,31 +26,34 @@ namespace pizzaria.api01.Repositorio
             return await _dbConnection.QueryAsync<MateriaPrimas>($"SELECT * FROM {typeof(MateriaPrimas).Name}");
         }
 
-        //public virtual async Task<IEnumerable<MateriaPrimas>> ListarMateriaPrima(FiltroMateriaPrima filtro)
-        //{
-        //    var filtroMateriaPrima = _filtroMateriaPrima.FiltrarMateriaPrimas(filtro);
+        public virtual async Task<IEnumerable<MateriaPrimas>> ListarMateriaPrimaFiltrada(FiltroMateriaPrima filtro)
+        {
+           //if(string.IsNullOrEmpty(filtro.Valor_LIKE) || string.IsNullOrEmpty(filtro.Valor_IGUAL))
+           // {
+           //     var commandsemwhereIf = $"SELEC Id, Descricao, Estoque FROM {typeof(MateriaPrimas).Name}";
+           //     return await _dbConnection.QueryAsync<MateriaPrimas>(commandsemwhereIf);
 
-        //    if (filtroMateriaPrima != null)
-        //    {
-        //        var parametros = new DynamicParameters();
-        //        parametros.Add("@materia_filtro", $"{filtro.Valor}", DbType.String);
+           // }
 
-        //        var command = $"SELECT Id, Descricao, Estoque FROM MateriaPrimas {filtroMateriaPrima}";
+            var filtroMateriaPrima = _filtroMateriaPrima.FiltrarMateriaPrimas(filtro);
 
-        //        return await _dbConnection.QueryAsync<MateriaPrimas>(command, parametros);
-        //    }
-
-        //    var commandsemwhere = $"SELEC Id, Descricao, Estoque FROM {typeof(MateriaPrimas).Name}";
-
-        //    return await _dbConnection.QueryAsync<MateriaPrimas>(commandsemwhere);
-
-
+            if (filtroMateriaPrima != null)
+            {
+                var parametros = new DynamicParameters();
+                parametros.Add($"@{filtro.Valor}_filtro", $"{filtro.Valor}", DbType.String);
+                parametros.Add($"@{filtro.Valor_LIKE}_filtro", $"{filtro.Valor_LIKE}", DbType.String);
+                parametros.Add($"@{filtro.Valor_IGUAL}_filtro", $"{filtro.Valor_IGUAL}", DbType.String);
 
 
+                var command = $"SELECT Id, Descricao, Estoque FROM MateriaPrimas {filtroMateriaPrima}";
 
+               return await _dbConnection.QueryAsync<MateriaPrimas>(command, parametros);
+            }
 
+            var commandsemwhere = $"SELEC Id, Descricao, Estoque FROM {typeof(MateriaPrimas).Name}";
+            return await _dbConnection.QueryAsync<MateriaPrimas>(commandsemwhere);
 
-        //}
+        }
 
 
 

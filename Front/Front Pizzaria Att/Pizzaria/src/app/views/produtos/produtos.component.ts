@@ -14,8 +14,5 @@ export class ProdutosComponent implements OnInit {
     
   }
 
-  navigateProdutoCriar(): void {
-    this.router.navigate(['/materia-prima/criar'])
-  }
 
 }
