@@ -8,5 +8,6 @@ namespace pizzaria.api01.Interface
         Task<int> InserirUsuarios(Usuarios usuarios);
         Task<bool> AlterarUsuarios(Usuarios usuarios);
         Task<bool> ExcluirUsuarios(int id);
+        Task<Usuarios> LoginUsuario(string nome, string senha);
     }
 }

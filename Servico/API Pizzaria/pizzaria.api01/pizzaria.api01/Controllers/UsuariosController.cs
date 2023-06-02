@@ -37,6 +37,21 @@ namespace pizzaria.api01.Controllers
             return Ok(usuarios);
         }
 
+        [HttpGet("Login/{nome}/{senha}")]
+        public async Task<IActionResult> Login(string nome, string senha)
+        {
+            var usuario = await _usuariosRepositorio.LoginUsuario(nome, senha);
+
+            if (usuario != null)
+            {
+                return Ok(usuario);
+            }
+            else
+            {
+                return NotFound("Usuário não encontrado.");
+            }
+        }
+
         [HttpPost("Incluir")]
         public async Task<IActionResult> IncluirUsuarios([FromBody] Usuarios usuarios)
         {
@@ -69,6 +84,8 @@ namespace pizzaria.api01.Controllers
 
             return NoContent();
         }
+
+
 
     }
 }
