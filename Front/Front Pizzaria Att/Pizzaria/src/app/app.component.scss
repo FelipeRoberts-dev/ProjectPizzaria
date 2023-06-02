@@ -1,0 +1,13 @@
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+  }
+  
+  .nav {
+    position: fixed;
+    top: 65px; /* Ajuste essa altura de acordo com o tamanho do seu header */
+    width: 100%;
+    z-index: 99;
+  }

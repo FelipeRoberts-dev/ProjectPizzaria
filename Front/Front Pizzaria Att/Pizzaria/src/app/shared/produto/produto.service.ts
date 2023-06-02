@@ -7,6 +7,8 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from './../../../enviroments/enviroment'
 import Swal from 'sweetalert2/src/sweetalert2.js'
 import { MateriaPrimaFiltros } from './produtosFiltro.model';
+import { Route, Router } from '@angular/router';
+import { EMPTY } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -22,6 +24,7 @@ export class ProdutoService {
 
 
   constructor(
+    private route: Router,
     private exibirmsg: MatSnackBar,
     private http : HttpClient
   ) { }
@@ -101,7 +104,7 @@ export class ProdutoService {
     );
   }
 
-  excluir(id: string) {
+  excluir(id: string): Observable<void> {
     const url = `${this.baseUrl}/Excluir/${id}`;
     const swalWithBootstrapButtons = Swal.mixin({
       buttonsStyling: true,
@@ -111,46 +114,50 @@ export class ProdutoService {
       }
     });
   
-    swalWithBootstrapButtons.fire({
-      title: 'Deseja Excluir?',
-      text: "Você não poderá reverter isso!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: '<span class="btn-label"><i class="fa fa-check"></i></span>Sim, excluir!',
-      cancelButtonText: '<span class="btn-label"><i class="fa fa-times"></i></span>Não, cancelar!',
-      reverseButtons: true
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.http.delete<Produtos>(url).pipe(
-          catchError((error) => {
-            console.error('Erro ao excluir produto', error);
+    return new Observable<void>((observer) => {
+      swalWithBootstrapButtons.fire({
+        title: 'Deseja Excluir?',
+        text: "Você não poderá reverter isso!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: '<span class="btn-label"><i class="fa fa-check"></i></span>Sim, excluir!',
+        cancelButtonText: '<span class="btn-label"><i class="fa fa-times"></i></span>Não, cancelar!',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.http.delete<void>(url).pipe(
+            catchError((error) => {
+              console.error('Erro ao excluir produto', error);
+              swalWithBootstrapButtons.fire(
+                'Erro!',
+                'Ocorreu um erro ao excluir a matéria prima.',
+                'error'
+              );
+              observer.error(error);
+              return EMPTY;
+            })
+          ).subscribe(() => {
             swalWithBootstrapButtons.fire(
-              'Erro!',
-              'Ocorreu um erro ao excluir a matéria prima.',
-              'error'
-            );
-            return of(null);
-          })
-        ).subscribe(() => {
+              'Excluído!',
+              'A matéria prima foi excluída com sucesso.',
+              'success'
+            ).then(() => {
+              observer.next();
+              observer.complete();
+            });
+          });
+        } else {
           swalWithBootstrapButtons.fire(
-            'Excluído!',
-            'A matéria prima foi excluída com sucesso.',
-            'success',
-
-            
-          ).then(() => {
-            location.reload();
-          })
-        });
-      } else {
-        swalWithBootstrapButtons.fire(
-          'Cancelado',
-          'A exclusão da matéria prima foi cancelada.',
-          'info'
-        );
-      }
+            'Cancelado',
+            'A exclusão da matéria prima foi cancelada.',
+            'info'
+          );
+          observer.complete();
+        }
+      });
     });
   }
+  
   
   
   

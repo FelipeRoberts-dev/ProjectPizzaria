@@ -9,10 +9,23 @@ import { ProdutoAlterarComponent } from './shared/produto/produto-alterar/produt
 import { ProdutosMateriaPrimaComponent } from './views/produtos-materia-prima/produtos-materia-prima.component';
 import { ProdutosMateriaPrimaCreateComponent } from './shared/produtosMateriaPrima/produtos-materia-prima-create/produtos-materia-prima-create.component';
 import { UsuariosComponent } from './views/usuarios/usuarios.component';
+import { LoginComponent } from './views/login/login.component';
+import { AutenticacaoSistemaComponent } from './autenticacao-sistema/autenticacao-sistema.component';
+
 const routes: Routes = [{
   path: "",
+  pathMatch: 'full',
+  redirectTo: 'login'
+},
+{
+  path: "login",
+  component: LoginComponent
+},
+{   
+  path: 'inicio',
   component: InicioComponent
-},{
+},
+{
   path: "materia-prima",
   component: ProdutosComponent
 },
@@ -47,7 +60,7 @@ const routes: Routes = [{
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes),],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

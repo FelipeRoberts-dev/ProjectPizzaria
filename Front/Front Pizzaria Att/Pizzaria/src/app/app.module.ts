@@ -18,6 +18,8 @@ import { ProdutosMateriaPrimaComponent } from './views/produtos-materia-prima/pr
 import { UsuariosComponent } from './views/usuarios/usuarios.component';
 
 import { MatDialogModule } from '@angular/material/dialog';
+import { LoginComponent } from './views/login/login.component';
+import { AutenticacaoSistemaComponent } from './autenticacao-sistema/autenticacao-sistema.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     ForDirective,
     ProdutosMateriaPrimaComponent,
     UsuariosComponent,
+    LoginComponent,
+    AutenticacaoSistemaComponent,
   ],
   imports: [
     BrowserModule,

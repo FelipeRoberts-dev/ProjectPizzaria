@@ -127,19 +127,23 @@ export class ProdutoReadComponent implements OnInit {
 
 
    
-    carregarIdExclusao(id: string){
-      
-       this.produtosService.lerId(id).subscribe(produtoParam => {
+    carregarIdExclusao(id: string) {
+      this.produtosService.lerId(id).subscribe(produtoParam => {
+        this.produto = produtoParam;
+    
+        const idExcluir: string = this.produto.id.toString();
+    
+        this.produtosService.excluir(idExcluir).subscribe(() => {
+          // Remover o produto excluído do array de produtos
+          this.produtosArray.data = this.produtosArray.data.filter(item => item.id !== parseInt(idExcluir));
 
-          this.produto = produtoParam
-
-          const idExcluir: string = this.produto.id.toString();
-
-          this.produtosService.excluir(idExcluir);
-
-
-       })
-      }
+    
+          // Atualizar a lista
+          this.produtosService.listar();
+        });
+      });
+    }
+    
 
     
     pesquisar(){

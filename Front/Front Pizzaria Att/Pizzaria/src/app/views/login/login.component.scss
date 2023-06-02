@@ -1,0 +1,153 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center; /* Alinha os elementos verticalmente no meio do contêiner */
+	justify-content: center;
+	height: 100vh;
+}
+
+.background-image {
+	background-image: url("../../../assets/img/pizza.jpg");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 100vh; /* Ajusta a altura para ocupar toda a tela */
+	width: 100%; /* Ajusta a largura para ocupar toda a tela */
+    margin-top: -50px; /* Reduza a margem superior */
+    position: relative;
+}
+
+.title-small {
+	font-size: 15px;
+	font-weight: bold;
+	margin-bottom: 15px;
+	margin-left: 0%;
+	text-align: center;
+	color: rgb(197, 195, 195);
+}
+
+//Colocar labels encima do card campos
+.labels{
+   position: relative;
+   left: 285px;   
+}
+
+.container-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    height: 100vh;
+     /* Distância da margem esquerda */
+  }
+
+.title-large {
+	font-size: 20px;
+	margin-bottom: 10px;
+	margin-left: 0%;
+	text-align: center;
+}
+
+.form-container {
+	font-size: 13px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 35px;
+	border: 1px #ffffff;
+	border-radius: 11px;
+	margin-left: 60%;
+	width: 400px;
+	background-color: #ffffff;
+	box-shadow: 5px 5px 20px rgba(110, 110, 110, 0.5);
+    
+}
+
+.form-label {
+	display: flex;
+	margin-bottom: 2px;
+	font-family: Helvetica, sans-serif;
+	width: 89%;
+}
+
+.form-input {
+	padding: 10px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	border: none;
+	background-color: #f5f5f5;
+	width: 100%;
+	max-width: 300px;
+}
+
+.form-button {
+	background-color: rgb(16, 135, 247);
+	border-radius: 5px;
+	padding: 10px;
+	color: white;
+	font-size: 16px;
+	border: none;
+	width: 90%;
+	cursor: pointer;
+}
+
+.button {
+	background-color: #007bff;
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	margin-top: 20px;
+}
+
+.button-container {
+	padding-right: 100px;
+	display: inline-block;
+}
+
+.break {
+	display: block;
+	margin-left: 6px;
+	margin-right: 230px;
+	font-size: 12px;
+	cursor: pointer;
+	break-after: avoid-column;
+	white-space: nowrap;
+}
+
+
+
+//Css animção Card
+
+.fadeInLeftBig {
+    -webkit-animation-name: fadeInLeftBig;
+    animation-name: fadeInLeftBig;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    }
+    @-webkit-keyframes fadeInLeftBig {
+    0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-2000px, 0, 0);
+    transform: translate3d(-2000px, 0, 0);
+    }
+    100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+    }
+    }
+    @keyframes fadeInLeftBig {
+    0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-2000px, 0, 0);
+    transform: translate3d(-2000px, 0, 0);
+    }
+    100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+    }
+    } 
