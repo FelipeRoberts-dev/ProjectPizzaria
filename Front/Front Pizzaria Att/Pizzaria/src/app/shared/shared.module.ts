@@ -41,6 +41,7 @@ import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule } from '@angular/material/d
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { DialogRefComponent } from './dialog-ref/dialog-ref.component';
 import { MatRadioModule } from '@angular/material/radio';
+import { UsuariosAlterarComponent } from './usuario/usuarios-alterar/usuarios-alterar.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { MatRadioModule } from '@angular/material/radio';
     ProdutosMateriaPrimaCreateComponent,
     UsuariosRedComponent,
     UsuariosCreateComponent,
-    DialogRefComponent
+    DialogRefComponent,
+    UsuariosAlterarComponent
   ],
   imports: [
     CommonModule,

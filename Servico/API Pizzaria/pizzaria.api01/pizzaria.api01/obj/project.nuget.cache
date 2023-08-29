@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "D6pc+QOOAMXDROL+hcY6pJjRqbBol9CvXDbGCo42pqAs/EpwTPZ7trTmKBX73RrUYz+Samyq3QspXyBvfW/TLg==",
+  "dgSpecHash": "DO6+bjuCn7NA3vQJWr/HNIRJBINBnIno7Vk/F4oCGv8uJepDjmYy5OiV9iLmVKiKA5/JAFY6Jdlczwsame7jWw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\Pizzaria Faculdae api\\Servico\\API Pizzaria\\pizzaria.api01\\pizzaria.api01\\pizzaria.api01.csproj",
+  "projectFilePath": "C:\\Users\\felip\\OneDrive\\Área de Trabalho\\Projeto Pizzaria\\ProjectPizzaria\\Servico\\API Pizzaria\\pizzaria.api01\\pizzaria.api01\\pizzaria.api01.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\felip\\.nuget\\packages\\aspose.pdf\\23.4.0\\aspose.pdf.23.4.0.nupkg.sha512",
     "C:\\Users\\felip\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",

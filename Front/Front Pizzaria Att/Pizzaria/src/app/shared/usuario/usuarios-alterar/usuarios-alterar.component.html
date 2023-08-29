@@ -1,0 +1,24 @@
+<mat-card>
+    <mat-card-title>Alterar Usuário</mat-card-title>
+    <form [formGroup]="UsuariosForm">
+        <mat-form-field>
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName="nome" name="nome"
+            [(ngModel)]="usuarios.nome">
+        </mat-form-field> 
+        <mat-form-field>
+            <mat-label>Senha</mat-label>
+            <input matInput formControlName="senha" name="senha"
+            [(ngModel)]="usuarios.senha">
+        </mat-form-field> 
+
+        <div *ngIf="UsuariosForm.get('codigo')?.errors && UsuariosForm.get('codigo')?.touched" class="error"></div>
+    </form>
+</mat-card>
+
+<button mat-raised-button (click)="alterarUsuarios()" class="mat-primary mat-dark button">
+    Atualizar
+</button>
+<button mat-raised-button (click)="cancelar()">
+    Voltar
+</button>

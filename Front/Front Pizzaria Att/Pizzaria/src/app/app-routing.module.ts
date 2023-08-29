@@ -11,6 +11,7 @@ import { ProdutosMateriaPrimaCreateComponent } from './shared/produtosMateriaPri
 import { UsuariosComponent } from './views/usuarios/usuarios.component';
 import { LoginComponent } from './views/login/login.component';
 import { AutenticacaoSistemaComponent } from './autenticacao-sistema/autenticacao-sistema.component';
+import { UsuariosAlterarComponent } from './shared/usuario/usuarios-alterar/usuarios-alterar.component';
 
 const routes: Routes = [{
   path: "",
@@ -56,6 +57,10 @@ const routes: Routes = [{
   {
     path: "usuarios/criar",
     component: UsuariosCreateComponent
+  },
+  {
+    path: "usuarios/alterar/:id",
+    component:UsuariosAlterarComponent
   }
 ];
 
