@@ -23,6 +23,11 @@ dados = ['nome', 'senha', 'action'];
 @ViewChild(MatPaginator) paginator: MatPaginator;
 @ViewChild(MatSort) sort: MatSort;
 
+
+//Objeto para deleção
+
+usuario: Usuarios;
+
 constructor(
 private usuarioService: UsuarioService,
 private paginatorIntl: MatPaginatorIntl
@@ -68,6 +73,24 @@ default: return '';
 
 
 this.usuariosArray.sort = this.sort; // habilitar ordenação
+}
+
+
+carregarIdExclusao(id: string) {
+  this.usuarioService.lerId(id).subscribe(usuarioParam => {
+    this.usuario = usuarioParam;
+
+    const idExcluir: string = this.usuario.id.toString();
+
+    this.usuarioService.excluir(idExcluir).subscribe(() => {
+      // Remover o produto excluído do array de produtos
+      this.usuariosArray.data = this.usuariosArray.data.filter(item => item.id !== parseInt(idExcluir));
+
+
+      // Atualizar a lista
+      this.usuarioService.listar();
+    });
+  });
 }
 
 }

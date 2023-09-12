@@ -5,7 +5,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs';
 import { environment } from 'src/enviroments/enviroment';
-
+import Swal from 'sweetalert2/src/sweetalert2.js'
+import { EMPTY } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -76,14 +77,58 @@ export class UsuarioService {
   }
 
 
-  excluir(id: string) : Observable<Usuarios> {
+  excluir(id: string): Observable<void> {
     const url = `${this.baseUrl}/Excluir/${id}`;
-    return this.http.delete<Usuarios>(url).pipe(
-      catchError((error) => {
-        console.error('Erro ao excluir usuario', error);
-        return of(null);
-      })
-    )
+    const swalWithBootstrapButtons = Swal.mixin({
+      buttonsStyling: true,
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger ml-2'
+      }
+    });
+  
+    return new Observable<void>((observer) => {
+      swalWithBootstrapButtons.fire({
+        title: 'Deseja Excluir?',
+        text: "Você não poderá reverter isso!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: '<span class="btn-label"><i class="fa fa-check"></i></span>Sim, excluir!',
+        cancelButtonText: '<span class="btn-label"><i class="fa fa-times"></i></span>Não, cancelar!',
+        reverseButtons: true
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.http.delete<void>(url).pipe(
+            catchError((error) => {
+              console.error('Erro ao excluir produto', error);
+              swalWithBootstrapButtons.fire(
+                'Erro!',
+                'Ocorreu um erro ao excluir o usuário.',
+                'error'
+              );
+              observer.error(error);
+              return EMPTY;
+            })
+          ).subscribe(() => {
+            swalWithBootstrapButtons.fire(
+              'Excluído!',
+              'O usuário  foi excluído com sucesso.',
+              'success'
+            ).then(() => {
+              observer.next();
+              observer.complete();
+            });
+          });
+        } else {
+          swalWithBootstrapButtons.fire(
+            'Cancelado',
+            'A exclusão do usuário foi cancelado.',
+            'info'
+          );
+          observer.complete();
+        }
+      });
+    });
   }
 
 

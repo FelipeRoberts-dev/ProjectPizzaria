@@ -18,3 +18,33 @@ table{
 app-produto-read{
     overflow-y: auto;
 }
+
+
+.senha-hidden {
+    position: relative;
+  }
+  
+  .senha-asteriscos {
+    position: absolute;
+    left: 0;
+    right: 0;
+    color: transparent;
+    text-shadow: 0 0 2px black; /* Defina a sombra do texto para criar os asteriscos */
+    white-space: nowrap; /* Evita que o elemento quebre em várias linhas */
+  }
+  
+
+
+
+  .deletar {
+    text-decoration: none; /* Remove a decoração de texto (sublinhado) */
+    color: #333; /* Cor padrão do ícone */
+    transition: color 0.3s; /* Adiciona uma transição suave para a mudança de cor */
+  
+    /* Estilos quando o mouse passa por cima (hover) */
+    &:hover {
+      color: red; /* Altera a cor do ícone ao passar o mouse sobre ele */
+      cursor: pointer; /* Altera o cursor do mouse para parecer um botão clicável */
+    }
+  }
+  

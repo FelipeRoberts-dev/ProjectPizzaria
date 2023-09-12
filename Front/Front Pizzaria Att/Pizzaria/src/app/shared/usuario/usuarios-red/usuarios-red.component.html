@@ -9,8 +9,11 @@
       <!-- Estoque Column -->
       <ng-container matColumnDef="senha">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Senha</th>
-        <td mat-cell *matCellDef="let row">{{row.senha}}</td>
+        <td mat-cell *matCellDef="let row" class="senha-hidden">
+          <span class="senha-asteriscos">****</span>
+        </td>
       </ng-container>
+      
   
       <!-- Ações Column -->
       <ng-container matColumnDef="action">
@@ -21,7 +24,7 @@
                     edit
                 </i>
             </a>
-            <a routerLink="/materia-prima/deletar/{{row.id}}" class="deletar">
+            <a class="deletar hover-button" (click)="carregarIdExclusao(row.id)">
                 <i class="material-icons">
                     delete
                 </i>
