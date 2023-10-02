@@ -12,8 +12,10 @@ var builder = WebApplication.CreateBuilder(args);
 string connectionString = @"Data Source=localhost;User ID=sa;Password=123;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False; Initial Catalog=Pizzaria";
 builder.Services.AddTransient<IDbConnection>((sp) => new SqlConnection(connectionString));
 builder.Services.AddScoped<IMateriaPrima<MateriaPrimas>, MateriaPrimaRepositorio>();
+//builder.Services.AddScoped<IHistoricoMateriaPrima<HistoricoMateriaPrima>, HistoricoMateriaPrima>();
 builder.Services.AddScoped<FiltroMateriaPrimaRepository>();
 builder.Services.AddScoped<FiltroMateriaPrimaRepository>();
+builder.Services.AddScoped<HistoricoMateriaPrimaRepositorio>();
 
 builder.Services.AddCors(options =>
 {

@@ -4,6 +4,7 @@ import { Component, OnInit, ViewChild  } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginatorIntl } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -27,7 +28,8 @@ dados = ['codigo', 'descricao']
 
 constructor(
   private produtosService: ProdutosmateriaprimaService,
-  private paginatorIntl: MatPaginatorIntl
+  private paginatorIntl: MatPaginatorIntl,
+  private router: Router
 
 ){}
 
@@ -74,5 +76,10 @@ carregarPaginacao(){
    this.materiasPrimas = materiaPrimas;
   })
 }*/
+
+
+navigateProdutoCriar(): void{
+  this.router.navigate(['/produtos/criar'])
+}
 
 }

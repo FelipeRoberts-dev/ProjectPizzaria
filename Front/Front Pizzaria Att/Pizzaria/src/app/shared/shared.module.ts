@@ -31,7 +31,6 @@ import { ProdutoDeletarComponent } from './produto/produto-deletar/produto-delet
 import { ConfirmacaoExclusaoComponentComponent } from './produto/confirmacao-exclusao-component/confirmacao-exclusao-component.component'
 import { MatIconModule } from '@angular/material/icon';
 import { ProdutosMateriaPrimaRedComponent } from './produtosMateriaPrima/produtos-materia-prima-red/produtos-materia-prima-red.component';
-import { ProdutosMateriaPrimaCreateComponent } from './produtosMateriaPrima/produtos-materia-prima-create/produtos-materia-prima-create.component';
 import { MatSelectModule } from '@angular/material/select';
 import { UsuariosRedComponent } from './usuario/usuarios-red/usuarios-red.component';
 import { UsuariosCreateComponent } from './usuario/usuarios-create/usuarios-create.component';
@@ -42,6 +41,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { DialogRefComponent } from './dialog-ref/dialog-ref.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { UsuariosAlterarComponent } from './usuario/usuarios-alterar/usuarios-alterar.component';
+import { CatalogoCreateComponent } from './produtosMateriaPrima/catalogo-create/catalogo-create.component';
 
 @NgModule({
   declarations: [
@@ -56,11 +56,11 @@ import { UsuariosAlterarComponent } from './usuario/usuarios-alterar/usuarios-al
     ProdutoDeletarComponent,
     ConfirmacaoExclusaoComponentComponent,
     ProdutosMateriaPrimaRedComponent,
-    ProdutosMateriaPrimaCreateComponent,
     UsuariosRedComponent,
     UsuariosCreateComponent,
     DialogRefComponent,
-    UsuariosAlterarComponent
+    UsuariosAlterarComponent,
+    CatalogoCreateComponent
   ],
   imports: [
     CommonModule,
@@ -96,7 +96,6 @@ import { UsuariosAlterarComponent } from './usuario/usuarios-alterar/usuarios-al
     ProdutoAlterarComponent,
     ProdutoDeletarComponent,
     ProdutosMateriaPrimaRedComponent,
-    ProdutosMateriaPrimaCreateComponent,
     UsuariosRedComponent,
     UsuariosCreateComponent,
     MatRadioModule,

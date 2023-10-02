@@ -7,11 +7,11 @@ import {InicioComponent}  from './views/inicio/inicio.component'
 import {ProdutosComponent} from './views/produtos/produtos.component'
 import { ProdutoAlterarComponent } from './shared/produto/produto-alterar/produto-alterar.component';
 import { ProdutosMateriaPrimaComponent } from './views/produtos-materia-prima/produtos-materia-prima.component';
-import { ProdutosMateriaPrimaCreateComponent } from './shared/produtosMateriaPrima/produtos-materia-prima-create/produtos-materia-prima-create.component';
 import { UsuariosComponent } from './views/usuarios/usuarios.component';
 import { LoginComponent } from './views/login/login.component';
 import { AutenticacaoSistemaComponent } from './autenticacao-sistema/autenticacao-sistema.component';
 import { UsuariosAlterarComponent } from './shared/usuario/usuarios-alterar/usuarios-alterar.component';
+import { CatalogoCreateComponent } from './shared/produtosMateriaPrima/catalogo-create/catalogo-create.component';
 
 const routes: Routes = [{
   path: "",
@@ -48,7 +48,7 @@ const routes: Routes = [{
   },
   {
     path: "produtos/criar",
-    component: ProdutosMateriaPrimaCreateComponent
+    component: CatalogoCreateComponent
   },
   {
     path: "usuarios",

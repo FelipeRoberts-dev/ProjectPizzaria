@@ -1,0 +1,24 @@
+<mat-card>
+    <mat-card-title>Novo Produto Catálogo</mat-card-title>
+    <form [formGroup]="produtoMateriaPrima">
+        <mat-form-field>
+            <mat-label>Código</mat-label>
+            <input matInput formControlName="codigo" name="codigo"
+            [(ngModel)]="produtosMateriaPrima.codigo">
+        </mat-form-field> 
+        <mat-form-field>
+            <mat-label>Descrição</mat-label>
+            <input matInput formControlName="descricao" name="descricao"
+            [(ngModel)]="produtosMateriaPrima.descricao">
+        </mat-form-field> 
+
+        <div *ngIf="produtoMateriaPrima.get('codigo')?.errors && produtoMateriaPrima.get('descricao')?.touched" class="error"></div>
+    </form>
+</mat-card>
+
+<button mat-raised-button (click)="criarProdutoMateriaPrima()" class="mat-primary mat-dark button">
+    Salvar
+</button>
+<button mat-raised-button (click)="cancelar()">
+    Voltar
+</button>

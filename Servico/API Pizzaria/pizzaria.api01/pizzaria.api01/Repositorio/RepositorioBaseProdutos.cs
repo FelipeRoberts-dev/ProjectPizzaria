@@ -33,9 +33,10 @@ namespace pizzaria.api01.Repositorio
         }
         public virtual async Task<int> InserirProdutos(Produtos produtos)
         {
-            var query = $"INSERT INTO {typeof(Produtos).Name} (Codigo, Descricao, MateriaPrimaId, Quantidade) VALUES (@Codigo, @Descricao, @MateriaPrimaId, @Quantidade); SELECT SCOPE_IDENTITY();";
+            var query = $"INSERT INTO {typeof(Produtos).Name} (Codigo, Descricao) VALUES (@Codigo, @Descricao); SELECT SCOPE_IDENTITY();";
             return await _dbConnection.ExecuteScalarAsync<int>(query, produtos);
         }
+
         public virtual async Task<bool> AlterarProdutos(Produtos produtos)
         {
             var query = $"UPDATE {typeof(Produtos).Name} SET Codigo = @Codigo, Descricao = @Descricao, Quantidade = @Quantidade WHERE Id = @Id";
