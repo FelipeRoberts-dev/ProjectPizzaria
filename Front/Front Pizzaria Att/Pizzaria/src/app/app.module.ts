@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
@@ -20,6 +19,7 @@ import { UsuariosComponent } from './views/usuarios/usuarios.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { LoginComponent } from './views/login/login.component';
 import { AutenticacaoSistemaComponent } from './autenticacao-sistema/autenticacao-sistema.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -35,12 +35,12 @@ import { AutenticacaoSistemaComponent } from './autenticacao-sistema/autenticaca
     AppRoutingModule,
     MatFormFieldModule,
     MatInputModule,
-    SharedModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    SharedModule
   ],
   exports : [
     ForDirective

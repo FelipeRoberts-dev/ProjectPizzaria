@@ -1,3 +1,4 @@
+import { ProdutosMateriaPrimaAlterarComponent } from './produtosMateriaPrima/produtos-materia-prima-alterar/produtos-materia-prima-alterar.component';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './templates/header/header.component';
@@ -43,6 +44,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { UsuariosAlterarComponent } from './usuario/usuarios-alterar/usuarios-alterar.component';
 import { CatalogoCreateComponent } from './produtosMateriaPrima/catalogo-create/catalogo-create.component';
 
+
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -60,7 +62,8 @@ import { CatalogoCreateComponent } from './produtosMateriaPrima/catalogo-create/
     UsuariosCreateComponent,
     DialogRefComponent,
     UsuariosAlterarComponent,
-    CatalogoCreateComponent
+    CatalogoCreateComponent,
+    ProdutosMateriaPrimaAlterarComponent,
   ],
   imports: [
     CommonModule,

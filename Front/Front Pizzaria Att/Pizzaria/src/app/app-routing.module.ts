@@ -1,3 +1,4 @@
+import { ProdutosMateriaPrimaAlterarComponent } from './shared/produtosMateriaPrima/produtos-materia-prima-alterar/produtos-materia-prima-alterar.component';
 import { UsuariosCreateComponent } from './shared/usuario/usuarios-create/usuarios-create.component';
 import { ProdutoDeletarComponent } from './shared/produto/produto-deletar/produto-deletar.component';
 import { ProdutoCreateComponent } from './shared/produto/produto-create/produto-create.component';
@@ -49,6 +50,10 @@ const routes: Routes = [{
   {
     path: "produtos/criar",
     component: CatalogoCreateComponent
+  },
+  {
+    path: "produtos/alterar/:id",
+    component: ProdutosMateriaPrimaAlterarComponent
   },
   {
     path: "usuarios",

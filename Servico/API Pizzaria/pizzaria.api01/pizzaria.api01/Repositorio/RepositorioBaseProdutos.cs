@@ -39,7 +39,7 @@ namespace pizzaria.api01.Repositorio
 
         public virtual async Task<bool> AlterarProdutos(Produtos produtos)
         {
-            var query = $"UPDATE {typeof(Produtos).Name} SET Codigo = @Codigo, Descricao = @Descricao, Quantidade = @Quantidade WHERE Id = @Id";
+            var query = $"UPDATE {typeof(Produtos).Name} SET Codigo = @Codigo, Descricao = @Descricao WHERE Id = @Id";
             var result = await _dbConnection.ExecuteAsync(query, produtos);
             return result > 0;
         }
