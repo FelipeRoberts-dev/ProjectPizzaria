@@ -18,5 +18,7 @@ namespace pizzaria.api01.Model
 
         public string Descricao { get; set; } // Adicione a propriedade para a descrição
 
+        public string? DescricaoMateriaPrima{ get; set; } //Atributo para descrição da materia prima
+
     }
 }

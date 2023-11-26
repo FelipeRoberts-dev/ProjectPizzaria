@@ -20,6 +20,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { LoginComponent } from './views/login/login.component';
 import { AutenticacaoSistemaComponent } from './autenticacao-sistema/autenticacao-sistema.component';
 import { SharedModule } from './shared/shared.module';
+import { HistoricoMateriaPrimasComponent } from './views/historico-materia-primas/historico-materia-primas.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { SharedModule } from './shared/shared.module';
     UsuariosComponent,
     LoginComponent,
     AutenticacaoSistemaComponent,
+    HistoricoMateriaPrimasComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,10 +42,10 @@ import { SharedModule } from './shared/shared.module';
     MatNativeDateModule,
     ReactiveFormsModule,
     MatDialogModule,
-    SharedModule
+    SharedModule,
   ],
   exports : [
-    ForDirective
+    ForDirective,
   ],
   providers: [],
   bootstrap: [AppComponent]

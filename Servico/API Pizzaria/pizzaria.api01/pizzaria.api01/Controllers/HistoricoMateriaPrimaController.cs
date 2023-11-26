@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DocumentFormat.OpenXml.Math;
+using Microsoft.AspNetCore.Mvc;
 using pizzaria.api01.Interface;
 using pizzaria.api01.Model;
 using pizzaria.api01.Repositorio;
@@ -43,6 +44,9 @@ namespace pizzaria.api01.Controllers
         [HttpPost("Incluir")]
         public async Task<IActionResult> IncluirHistoricoMateriaPrima([FromBody] HistoricoMateriaPrima historicoMateriaPrima)
         {
+            DateTime dataAtual = DateTime.Now;
+            historicoMateriaPrima.DataHistorico = dataAtual;
+
             var id = await _historicoMateriaPrimaRepositorio.InserirHistorico(historicoMateriaPrima);
             historicoMateriaPrima.HistoricoID = id;
 

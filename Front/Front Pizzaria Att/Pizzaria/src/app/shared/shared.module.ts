@@ -20,7 +20,7 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule} from '@angular/material/input';
 
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProdutoReadComponent } from './produto/produto-read/produto-read.component';
 import { MatTableModule } from '@angular/material/table';
@@ -43,8 +43,11 @@ import { DialogRefComponent } from './dialog-ref/dialog-ref.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { UsuariosAlterarComponent } from './usuario/usuarios-alterar/usuarios-alterar.component';
 import { CatalogoCreateComponent } from './produtosMateriaPrima/catalogo-create/catalogo-create.component';
-
-
+import { MateriaprimaPrimaHistoricoReadComponent } from './historicos/materiaPrimaHistorico/materiaprima-prima-historico-read/materiaprima-prima-historico-read.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { DatePipe } from '@angular/common';
+import {HistoricoMateriaPrimasCriarComponent} from './historicos/materiaPrimaHistorico/nateria-prima-historico-create/nateria-prima-historico-create.component'
+import { MatDatepickerModule } from '@angular/material/datepicker';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -64,6 +67,9 @@ import { CatalogoCreateComponent } from './produtosMateriaPrima/catalogo-create/
     UsuariosAlterarComponent,
     CatalogoCreateComponent,
     ProdutosMateriaPrimaAlterarComponent,
+    MateriaprimaPrimaHistoricoReadComponent,
+    HistoricoMateriaPrimasCriarComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -88,7 +94,11 @@ import { CatalogoCreateComponent } from './produtosMateriaPrima/catalogo-create/
     MatExpansionModule,
     MatCheckboxModule,
     MatDialogModule,
-    MatRadioModule
+    MatRadioModule,
+    MatMenuModule,
+    MatDatepickerModule,
+    MatInputModule,
+    
   ],
   exports: [
     HeaderComponent,
@@ -124,9 +134,14 @@ import { CatalogoCreateComponent } from './produtosMateriaPrima/catalogo-create/
     MatExpansionModule,
     MatCheckboxModule,
     MatDialogModule,
+    MateriaprimaPrimaHistoricoReadComponent,
+    MatDatepickerModule
   ],
   providers: [
-    
+    MatDatepickerModule,
+    DatePipe,
+    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' }, // Define o locale para português do Brasil
+    { provide: DateAdapter, useClass: MatNativeDateModule },
   ]
   
 })

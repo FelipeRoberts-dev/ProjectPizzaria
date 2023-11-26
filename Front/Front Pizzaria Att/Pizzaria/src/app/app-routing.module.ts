@@ -1,3 +1,4 @@
+
 import { ProdutosMateriaPrimaAlterarComponent } from './shared/produtosMateriaPrima/produtos-materia-prima-alterar/produtos-materia-prima-alterar.component';
 import { UsuariosCreateComponent } from './shared/usuario/usuarios-create/usuarios-create.component';
 import { ProdutoDeletarComponent } from './shared/produto/produto-deletar/produto-deletar.component';
@@ -13,6 +14,8 @@ import { LoginComponent } from './views/login/login.component';
 import { AutenticacaoSistemaComponent } from './autenticacao-sistema/autenticacao-sistema.component';
 import { UsuariosAlterarComponent } from './shared/usuario/usuarios-alterar/usuarios-alterar.component';
 import { CatalogoCreateComponent } from './shared/produtosMateriaPrima/catalogo-create/catalogo-create.component';
+import { MateriaprimaPrimaHistoricoReadComponent } from './shared/historicos/materiaPrimaHistorico/materiaprima-prima-historico-read/materiaprima-prima-historico-read.component';
+import { HistoricoMateriaPrimasCriarComponent } from './shared/historicos/materiaPrimaHistorico/nateria-prima-historico-create/nateria-prima-historico-create.component'
 
 const routes: Routes = [{
   path: "",
@@ -66,6 +69,14 @@ const routes: Routes = [{
   {
     path: "usuarios/alterar/:id",
     component:UsuariosAlterarComponent
+  },
+  {
+    path:"materia-prima-historico",
+    component: MateriaprimaPrimaHistoricoReadComponent
+  },
+  {
+    path:'materia-prima-historico/criar',
+    component: HistoricoMateriaPrimasCriarComponent
   }
 ];
 

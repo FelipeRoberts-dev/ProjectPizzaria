@@ -25,6 +25,18 @@
                 </i>
                 Materia Prima
             </a>
+
+            <!-- Menu Histórico com Popup Matéria Prima -->
+            <mat-menu #historicoMenu="matMenu">
+                <button mat-menu-item (click)="navigateTo('/materia-prima-historico')">Matéria Prima</button>
+                <!-- Outros itens de histórico podem ser adicionados aqui -->
+            </mat-menu>
+            <button mat-list-item [matMenuTriggerFor]="historicoMenu">
+                <i class="material-icons">history</i>
+                Histórico
+            </button>
+
+
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content class="navegacaocontent">

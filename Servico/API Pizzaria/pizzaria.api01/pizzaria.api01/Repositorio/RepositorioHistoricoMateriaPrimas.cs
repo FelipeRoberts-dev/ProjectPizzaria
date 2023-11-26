@@ -21,7 +21,15 @@ namespace pizzaria.api01.Repositorio
 
         public virtual async Task<IEnumerable<HistoricoMateriaPrima>> ListarHistorico()
         {
-            return await _dbConnection.QueryAsync<HistoricoMateriaPrima>($"SELECT * FROM {typeof(HistoricoMateriaPrima).Name}");
+            return await _dbConnection.QueryAsync<HistoricoMateriaPrima>($@"
+                SELECT 
+                       H.historicoID as HistoricoID,
+                       H.MateriaPrimaID as MateriaPrimaID,
+                       H.DataHistorico as DataHistorico,
+                       H.Descricao as Descricao  ,
+                       M.Descricao as DescricaoMateriaPrima
+                FROM {typeof(HistoricoMateriaPrima).Name} H
+                INNER JOIN dbo.MateriaPrimas M ON H.MateriaPrimaId = M.Id");
         }
 
         public virtual async Task<HistoricoMateriaPrima> GetByIdHistorico(int id)
@@ -29,10 +37,13 @@ namespace pizzaria.api01.Repositorio
             return await _dbConnection.QueryFirstOrDefaultAsync<HistoricoMateriaPrima>($"SELECT * FROM {typeof(HistoricoMateriaPrima).Name} WHERE HistoricoID = @id", new { id });
         }
 
-        public virtual async Task<int> InserirHistorico(HistoricoMateriaPrima usuarios)
+        public virtual async Task<int> InserirHistorico(HistoricoMateriaPrima historico)
         {
+            // Adicione a data atual ao objeto antes da inserção
+            
+
             var query = $"INSERT INTO {typeof(HistoricoMateriaPrima).Name} (MateriaPrimaID, DataHistorico, Descricao) VALUES (@MateriaPrimaID, @DataHistorico, @Descricao); SELECT SCOPE_IDENTITY();";
-            return await _dbConnection.ExecuteScalarAsync<int>(query, usuarios);
+            return await _dbConnection.ExecuteScalarAsync<int>(query, historico);
         }
 
         public virtual async Task<bool> ExcluirHistorico(int id)

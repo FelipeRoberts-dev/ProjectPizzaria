@@ -1,0 +1,50 @@
+
+table{
+    width: 100%;
+
+}
+
+.editar {
+    margin-right: 10px;
+}
+
+.editar > i{
+    color: #d9cd36;
+}
+
+.deletar > i{
+    color: red;
+}
+
+.deletar:hover{
+    cursor: pointer;
+}
+
+app-materiaprima-prima-historico-read{
+    overflow-y: auto;
+}
+
+
+
+.mat-mdc-form-field + .mat-mdc-form-field {
+    margin-left: 8px;
+  }
+
+
+.camposFiltros{
+    display: flex;
+    flex-direction: column; 
+}
+
+
+.mr-2{
+    margin-right: 0.5rem;
+}
+
+.ml-auto-direita{
+    margin-left: auto;
+}
+
+.ml-auto-esquerda{
+    margin-right: auto;
+}

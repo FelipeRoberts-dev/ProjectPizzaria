@@ -1,0 +1,38 @@
+<!-- Importe o módulo MatSelectModule no seu módulo Angular -->
+
+
+
+
+<mat-card>
+  <mat-card-title>Novo Histórico</mat-card-title>
+  <form [formGroup]="historicoMateriaPrimasForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Matéria Prima</mat-label>
+      <mat-select formControlName="materiaPrimaID" [value]="selectedOption" (selectionChange)="selecionarMateriaPrima($event)">
+        <mat-option *ngFor="let option of listaMateriaPrimas" [value]="option">
+          {{ option.descricao }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Data do Histórico</mat-label>
+      <input matInput type="date" formControlName="dataHistorico" [disabled]="true">
+    </mat-form-field>
+
+
+    <mat-form-field appearance="fill" style="width: 100%">
+      <mat-label>Descrição</mat-label>
+      <textarea matInput formControlName="descricao" rows="5" style="width: 100%"  [(ngModel)]="historicoMateriaPrimas.descricao" ></textarea>
+    </mat-form-field>
+  </form>
+</mat-card>
+
+
+<button mat-raised-button (click)="criarHistoricoMateriaPrimas()" class="mat-primary mat-dark button">
+  Salvar
+</button>
+<button mat-raised-button (click)="cancelar()">
+  Voltar
+</button>
+

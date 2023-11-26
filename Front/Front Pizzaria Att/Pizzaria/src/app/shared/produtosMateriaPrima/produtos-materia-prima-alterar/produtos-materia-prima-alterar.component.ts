@@ -53,19 +53,29 @@ export class ProdutosMateriaPrimaAlterarComponent implements OnInit {
   }
 
 
-  alterarProduto(): void{
+  alterarProduto(): void {
     if (this.produtoMateriaPrimasForm.valid) {
-      this.ProdutosmateriaprimaService.alterar(this.produtosMateriaPrima).subscribe(() => {
-        this.ProdutosmateriaprimaService.construirMessage('Produto atualizado com sucesso')
-        this.router.navigate(["/produtos"])
-      })
+      // Verificar se o código contém apenas números usando uma expressão regular
+      if (!/^\d+$/.test(this.produtosMateriaPrima.codigo.toString())) {
+        // Exibir mensagem de erro se o código não contém apenas números
+        this.ProdutosmateriaprimaService.construirMessage('O código deve conter apenas números');
+      } else {
+        // Chamar o serviço de alteração se o código for válido
+        this.ProdutosmateriaprimaService.alterar(this.produtosMateriaPrima).subscribe(() => {
+          this.ProdutosmateriaprimaService.construirMessage('Produto atualizado com sucesso');
+          this.router.navigate(['/produtos']);
+        });
+      }
     } else {
-      // exibir mensagem de erro
+      // Exibir mensagem de erro se algum campo obrigatório estiver em branco
       this.ProdutosmateriaprimaService.construirMessage('Preencha todos os campos obrigatórios');
     }
-    
-
   }
+  
+  
+
+
+
 
 
   codigoValidator(control: FormControl) {
